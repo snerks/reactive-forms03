@@ -1,0 +1,68 @@
+<!-- <p>home works!</p> -->
+
+<nav>
+  <div style="display: flex; flex-direction: column; align-items: stretch">
+    <div style="margin: 10px">
+      <a
+        routerLink="/list/0"
+        class="btn btn-outline-primary btn-lg btn-block"
+        href="#"
+        role="button"
+      >
+        <i class="fa-solid fa-user"></i> View All Shows ({{ allShows.length }})
+      </a>
+    </div>
+
+    <div style="margin: 10px">
+      <a
+        routerLink="/list/1"
+        href="#"
+        role="button"
+        [ngClass]="{
+          'btn btn-lg btn-block': true,
+          'btn-outline-primary': addedTodayShows.length === 0,
+          'btn-success': addedTodayShows.length > 0
+        }"
+      >
+        <i class="fa fa-list"></i> Added Today ({{ addedTodayShows.length }})
+      </a>
+    </div>
+
+    <div style="margin: 10px">
+      <a
+        routerLink="/list/3"
+        class="btn btn-outline-primary btn-lg btn-block"
+        href="#"
+        role="button"
+      >
+        <i class="fa fa-list"></i> Added In Last 3 Days ({{
+          addedWithin3DaysShows.length
+        }})
+      </a>
+    </div>
+
+    <div style="margin: 10px">
+      <a
+        routerLink="/list/7"
+        class="btn btn-outline-primary btn-lg btn-block"
+        href="#"
+        role="button"
+      >
+        <i class="fa fa-list"></i> Added In Last 7 Days ({{
+          addedWithin7DaysShows.length
+        }})
+      </a>
+    </div>
+
+    <div style="margin: 10px">
+      <a
+        routerLink="/create"
+        class="btn btn-outline-primary btn-lg btn-block"
+        href="#"
+        role="button"
+      >
+        <i class="fa fa-plus-circle"></i> Add New Show
+      </a>
+    </div>
+  </div>
+</nav>

@@ -1,0 +1,205 @@
+<!-- <p>showlist works!</p> -->
+
+<div *ngIf="showsInfo; then showsInfoContent; else loadingShowsContent"></div>
+<ng-template #loadingShowsContent>Loading Shows...</ng-template>
+
+<ng-template #showsInfoContent>
+  <div class="table-responsive">
+    <form style="margin: 10px 15px 10px 15px">
+      <div class="form-row">
+        <div class="col-5">
+          <label class="sr-only" htmlFor="inlineFormInputGroupUsername2">
+            Filter Artists
+          </label>
+          <div class="input-group mb-10 mr-sm-2">
+            <input
+              type="text"
+              class="form-control"
+              id="inlineFormInputGroupUsername2"
+              placeholder="Filter Artists"
+              [(ngModel)]="artistsSearchTerm"
+              [ngModelOptions]="{ standalone: true }"
+            />
+          </div>
+        </div>
+
+        <div class="col-2">
+          <span class="badge badge-dark">
+            {{ artistFilterShows.length }}
+          </span>
+          item{{ artistFilterShows.length !== 1 ? "s" : "" }}
+        </div>
+
+        <div class="col-3">
+          <div class="form-check mb-2 mr-sm-2">
+            <div>
+              <label htmlFor="customCheck1">
+                <input
+                  type="checkbox"
+                  [(ngModel)]="showPastEvents"
+                  [ngModelOptions]="{ standalone: true }"
+                />
+                Past Events
+              </label>
+            </div>
+          </div>
+        </div>
+        <div class="col-1" style="padding: 5px">
+          <a
+            routerLink="/"
+            class="btn btn-outline-secondary btn-sm"
+            href="#"
+            role="button"
+            title="Home"
+          >
+            <i class="fa fa-home"></i>
+          </a>
+        </div>
+        <div class="col-1" style="padding: 5px">
+          <a
+            routerLink="/create"
+            class="btn btn-primary btn-sm"
+            href="#"
+            role="button"
+            title="Add New Show"
+          >
+            <i class="fa fa-plus-circle"></i>
+          </a>
+        </div>
+      </div>
+    </form>
+
+    <table class="table table-striped table-sm">
+      <thead class="thead-dark">
+        <tr>
+          <th>Day</th>
+          <th>Date</th>
+          <th>Artists</th>
+          <th>Venue</th>
+          <th>&#160;</th>
+          <th>&#160;</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let show of sortedShows">
+          <td [attr.title]="show.id">{{ show.date | date : "E" }}</td>
+          <td>{{ show.date | date : "dd-MMM-yyyy" }}</td>
+          <td>
+            <p *ngFor="let artist of show.artists">
+              {{ artist.name }}
+
+              <span
+                *ngIf="artist.stageTime"
+                class="badge badge-pill badge-primary"
+                style="margin-right: 10px"
+                title="Stage Time"
+              >
+                {{ artist.stageTime }}
+              </span>
+
+              <a *ngIf="artist.videoUrl" [attr.href]="artist.videoUrl">
+                <span class="badge badge-danger" style="margin-right: 10px">
+                  Video
+                </span>
+              </a>
+            </p>
+          </td>
+          <td>
+            <!-- <div *ngIf="show.detailsUri;then detailsLink else eventIdLink"></div>
+            <ng-template #detailsLink><a [attr.href]="show.detailsUri">{{show.venue}}</a></ng-template>
+          -->
+            <div
+              *ngIf="show.eventIdBts; then eventIdLink; else noEventIdBtsLink"
+            ></div>
+            <ng-template #eventIdLink>
+              <div
+                *ngIf="show.eventIdBts; then eventIdBtsLink; else venueNoLink"
+              ></div>
+              <ng-template #eventIdBtsLink>
+                <a
+                  attr.href="{{
+                    'https://www.bristolticketshop.co.uk/eventdetails.aspx?e=' +
+                      getEventIdBtsForUrl(show)
+                  }}"
+                >
+                  {{ show.venue }}
+                </a>
+                <!-- eventIdBts = [{{show.eventIdBts}}]
+                eventIdBtsTrimmed = [{{getEventIdBtsForUrl(show)}}] -->
+                <!-- {{show.venue}} -->
+              </ng-template>
+            </ng-template>
+
+            <ng-template #noEventIdBtsLink>
+              <div
+                *ngIf="show.detailsUri; then detailsLink; else venueNoLink"
+              ></div>
+            </ng-template>
+
+            <ng-template #detailsLink
+              ><a [attr.href]="show.detailsUri">{{
+                show.venue
+              }}</a></ng-template
+            >
+            <ng-template #venueNoLink>{{ show.venue }}</ng-template>
+          </td>
+          <td>
+            <div style="padding: 3px">
+              <a
+                routerLink="/detail/{{ show.id }}"
+                class="btn btn-outline-primary btn-sm"
+                href="#"
+                role="button"
+                title="Edit"
+              >
+                <i class="fa fa-edit"></i>
+              </a>
+            </div>
+            <!-- <div style="padding: 3px;">
+              <a routerLink="/showconfirmdelete/{{show.id}}"
+                class="btn btn-outline-primary btn-sm"
+                href="#"
+                role="button"
+                title="Delete">
+                <i class="fa fa-trash"></i>
+              </a>
+            </div> -->
+          </td>
+          <td>
+            <span
+              *ngIf="show.isSoldOut"
+              class="badge badge-warning"
+              style="margin-right: 10px"
+            >
+              Sold Out
+            </span>
+
+            <span
+              *ngIf="show.isCancelled"
+              class="badge badge-danger"
+              style="margin-right: 10px"
+            >
+              Cancelled
+            </span>
+
+            <span
+              *ngIf="show.priceText && show.priceText.indexOf('£') === 0"
+              class="badge badge-info"
+              style="margin-right: 10px"
+            >
+              {{ show.priceText }}
+            </span>
+
+            <span *ngIf="show.notes" style="margin-right: 10px">{{
+              show.notes
+            }}</span>
+            <!-- <img
+              *ngIf="show.date.getTime() === new Date(2018, 11, 22).getTime()"
+              src="https://static.spin.com/files/2018/06/GettyImages-478918875-1530300783-640x460.jpg"
+              width="30px" /> -->
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</ng-template>
