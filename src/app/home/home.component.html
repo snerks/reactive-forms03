@@ -9,7 +9,11 @@
         href="#"
         role="button"
       >
-        <i class="fa-solid fa-user"></i> View All Shows ({{ allShows.length }})
+        <!-- <i class="fa-solid fa-user"></i> View All Shows ({{ allShows.length }}) -->
+        <!-- <i class="bi-alarm"></i> View All Shows ({{ allShows.length }}) -->
+        <ng-icon name="bootstrapList"></ng-icon> View All Shows ({{
+          allShows.length
+        }})
       </a>
     </div>
 
@@ -24,7 +28,9 @@
           'btn-success': addedTodayShows.length > 0
         }"
       >
-        <i class="fa fa-list"></i> Added Today ({{ addedTodayShows.length }})
+        <!-- <i class="fa fa-list"></i>  -->
+        <ng-icon name="bootstrapList"></ng-icon>
+        Added Today ({{ addedTodayShows.length }})
       </a>
     </div>
 
@@ -35,9 +41,10 @@
         href="#"
         role="button"
       >
-        <i class="fa fa-list"></i> Added In Last 3 Days ({{
-          addedWithin3DaysShows.length
-        }})
+        <!-- <i class="fa fa-list"></i>  -->
+        <ng-icon name="bootstrapList"></ng-icon>
+
+        Added In Last 3 Days ({{ addedWithin3DaysShows.length }})
       </a>
     </div>
 
@@ -48,9 +55,10 @@
         href="#"
         role="button"
       >
-        <i class="fa fa-list"></i> Added In Last 7 Days ({{
-          addedWithin7DaysShows.length
-        }})
+        <!-- <i class="fa fa-list"></i>  -->
+        <ng-icon name="bootstrapList"></ng-icon>
+
+        Added In Last 7 Days ({{ addedWithin7DaysShows.length }})
       </a>
     </div>
 
@@ -61,7 +69,28 @@
         href="#"
         role="button"
       >
-        <i class="fa fa-plus-circle"></i> Add New Show
+        <!-- <ng-icon name="bootstrapPlusCircleFill"></ng-icon> -->
+
+        <!-- <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="20"
+          height="20"
+          fill="currentColor"
+          class="bi bi-plus-circle-fill"
+          viewBox="0 0 20 20"
+        >
+          <path
+            d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3z"
+          />
+        </svg> -->
+        <!-- <i class="bi bi-plus-circle-fill"></i> -->
+        <!-- <i class="fa fa-plus-circle"></i>  -->
+
+        <ng-icon
+          name="bootstrapPlusCircleFill"
+          style="min-height: 22px"
+        ></ng-icon>
+        Add New Show
       </a>
     </div>
   </div>

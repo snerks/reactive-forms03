@@ -3,11 +3,12 @@ import { Show, ShowsInfo } from '../models';
 import { ShowService } from '../show.service';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { NgIconComponent } from '@ng-icons/core';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule, RouterModule],
+  imports: [CommonModule, RouterModule, NgIconComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css',
 })
