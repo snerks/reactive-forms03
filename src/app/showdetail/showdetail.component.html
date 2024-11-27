@@ -106,20 +106,22 @@
         </div>
       </div>
 
-      <button
-        class="btn btn-outline-dark float-right btn-sm"
-        type="button"
-        (click)="addArtist()"
-      >
-        Add Artist
-      </button>
+      <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+        <button
+          class="btn btn-outline-dark float-right btn-sm"
+          type="button"
+          (click)="addArtist()"
+        >
+          Add Artist
+        </button>
+      </div>
     </div>
 
     <div>
       <hr />
     </div>
 
-    <div class="float-right">
+    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
       <button
         type="button"
         class="btn btn-success btn-sm"
@@ -253,7 +255,7 @@
       style="margin-bottom: 15px;"
       (click)="submitShow()"
       [disabled]="!profileForm.valid">Save</button> -->
-    <div class="float-right">
+    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
       <button
         type="button"
         class="btn btn-success btn-sm"
