@@ -10,11 +10,12 @@ import {
   bootstrapHouseDoorFill,
   bootstrapPencilFill,
 } from '@ng-icons/bootstrap-icons';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, NgIconComponent],
+  imports: [RouterOutlet, NgIconComponent, NgbModule],
   providers: [
     provideIcons({
       bootstrapList,
