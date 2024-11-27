@@ -9,6 +9,7 @@ import {
   bootstrapPlusCircleFill,
   bootstrapHouseDoorFill,
   bootstrapPencilFill,
+  bootstrapCalendar2Date,
 } from '@ng-icons/bootstrap-icons';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
@@ -23,6 +24,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
       bootstrapPlusCircleFill,
       bootstrapHouseDoorFill,
       bootstrapPencilFill,
+      bootstrapCalendar2Date,
     }),
   ],
   templateUrl: './app.component.html',

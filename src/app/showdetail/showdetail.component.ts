@@ -24,11 +24,18 @@ import { NgbIsoDateAdapter } from '../ngb-iso-date-adapter';
 import { Observable } from 'rxjs';
 import { debounceTime, distinctUntilChanged, map } from 'rxjs/operators';
 import { VenueKeyMap } from '../venues-bts';
+import { NgIconComponent } from '@ng-icons/core';
 
 @Component({
   selector: 'app-showdetail',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, NgbModule, NgbDatepickerModule],
+  imports: [
+    CommonModule,
+    ReactiveFormsModule,
+    NgbModule,
+    NgbDatepickerModule,
+    NgIconComponent,
+  ],
   templateUrl: './showdetail.component.html',
   styleUrl: './showdetail.component.css',
   providers: [{ provide: NgbDateAdapter, useClass: NgbIsoDateAdapter }],

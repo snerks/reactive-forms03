@@ -22,12 +22,19 @@
           #d="ngbDatepicker"
         />
 
+        <!-- class="btn btn-outline-secondary calendar" -->
         <div class="input-group-append">
           <button
-            class="btn btn-outline-secondary calendar"
+            class="btn btn-outline-secondary"
             (click)="d.toggle()"
             type="button"
-          ></button>
+            title="Select Date"
+          >
+            <ng-icon
+              name="bootstrapCalendar2Date"
+              style="min-height: 18px"
+            ></ng-icon>
+          </button>
         </div>
       </div>
       <div
