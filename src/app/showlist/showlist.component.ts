@@ -5,11 +5,18 @@ import { Show, ShowsInfo } from '../models';
 import { ShowService } from '../show.service';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NgIconComponent } from '@ng-icons/core';
 
 @Component({
   selector: 'app-showlist',
   standalone: true,
-  imports: [CommonModule, RouterModule, FormsModule, ReactiveFormsModule],
+  imports: [
+    CommonModule,
+    RouterModule,
+    FormsModule,
+    ReactiveFormsModule,
+    NgIconComponent,
+  ],
   templateUrl: './showlist.component.html',
   styleUrl: './showlist.component.css',
 })

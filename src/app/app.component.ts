@@ -7,6 +7,8 @@ import {
   bootstrapList,
   bootstrapPlusCircle,
   bootstrapPlusCircleFill,
+  bootstrapHouseDoorFill,
+  bootstrapPencilFill,
 } from '@ng-icons/bootstrap-icons';
 
 @Component({
@@ -18,6 +20,8 @@ import {
       bootstrapList,
       bootstrapPlusCircle,
       bootstrapPlusCircleFill,
+      bootstrapHouseDoorFill,
+      bootstrapPencilFill,
     }),
   ],
   templateUrl: './app.component.html',
